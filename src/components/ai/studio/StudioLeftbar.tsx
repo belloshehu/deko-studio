@@ -6,7 +6,7 @@ export default function StudioLeftbar() {
 			<Button variant={"secondary"}>Workspace</Button>
 			<Button variant={"secondary"}>Settings</Button>
 			<Button variant={"secondary"}>Members</Button>
-			<Button variant={"secondary"}>Saved Decorations</Button>
+			<Button variant={"secondary"}>Saved</Button>
 		</aside>
 	);
 }

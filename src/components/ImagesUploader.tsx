@@ -83,19 +83,19 @@ export function ImagesUploader({
 									<Image
 										src={image["data_url"]}
 										alt=""
-										width="100"
-										height="100"
-										className="rounded-md h-[100px] w-[100px]"
+										width="60"
+										height="60"
+										className="rounded-md h-[60px] w-[60px]"
 									/>
 									{(withRemove || withUpdate) && (
-										<div className="image-item__btn-wrapper absolute top-0 right-0 bg-black bg-opacity-10 w-full flex justify-around items-center">
+										<div className="image-item__btn-wrapper absolute top-0 right-0 bg-blue-400/40 bg-opacity-10 w-full flex justify-around items-center">
 											<Button
 												variant={"ghost"}
 												size={"icon"}
 												className="bg-transparent text-white"
 												onClick={() => onImageUpdate(index)}
 											>
-												<Pen size={24} />
+												<Pen size={20} />
 											</Button>
 											<Button
 												variant={"ghost"}
@@ -103,7 +103,7 @@ export function ImagesUploader({
 												className="bg-transparent text-white"
 												onClick={() => onImageRemove(index)}
 											>
-												<Trash size={24} />
+												<Trash size={20} />
 											</Button>
 										</div>
 									)}

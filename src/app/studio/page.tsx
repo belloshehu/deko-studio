@@ -9,7 +9,7 @@ export default function StudioPage() {
 	return (
 		<PageWrapper className="grid gap-2 grid-cols-1 md:grid-cols-6 p-0 md:p-0">
 			<StudioLeftbar />
-			<StudionPageTabs className="col-span-4" />
+			<StudionPageTabs className="md:col-span-4 w-full" />
 			<StudioRightbar />
 		</PageWrapper>
 	);
