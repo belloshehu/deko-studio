@@ -1,4 +1,3 @@
-import StudioLeftbar from "@/components/ai/studio/StudioLeftbar";
 import StudionPageTabs from "@/components/ai/studio/StudioPageTabs";
 import StudioRightbar from "@/components/ai/studio/StudioRightbar";
 import PageWrapper from "@/components/page/PageWrapper";
@@ -7,8 +6,8 @@ import PageWrapper from "@/components/page/PageWrapper";
 // and also for the entertainers
 export default function StudioPage() {
 	return (
-		<PageWrapper className="grid gap-2 grid-cols-1 md:grid-cols-6 p-0 md:p-0">
-			<StudioLeftbar />
+		<PageWrapper className="grid gap-2 grid-cols-1 md:grid-cols-5 p-0 md:p-0">
+			{/* <StudioLeftbar /> */}
 			<StudionPageTabs className="md:col-span-4 w-full" />
 			<StudioRightbar />
 		</PageWrapper>

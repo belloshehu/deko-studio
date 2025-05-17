@@ -55,11 +55,11 @@ export function ImagesUploader({
 					errors,
 				}) => (
 					// write your building UI
-					<div className="upload__image-wrapper">
+					<div className="upload__image-wrapper flex items-center justify-center">
 						{(multiple || imageList.length === 0) && (
 							<Button
 								className={cn(
-									"h-full bg-gray-400 flex flex-col items-center justify-center  gap-2 animate-pulse",
+									"h-fit bg-gray-400 flex flex-col items-center justify-center  gap-2 animate-pulse w-fit",
 									{
 										isDragging: "text-red-600",
 									}
@@ -67,7 +67,7 @@ export function ImagesUploader({
 								onClick={onImageUpload}
 								{...dragProps}
 							>
-								Click or Drop here
+								{/* Click or Drop here */}
 								<Plus size={24} />
 							</Button>
 						)}
@@ -85,7 +85,7 @@ export function ImagesUploader({
 										alt=""
 										width="60"
 										height="60"
-										className="rounded-md h-[60px] w-[60px]"
+										className="rounded-md h-fit w-[60px]"
 									/>
 									{(withRemove || withUpdate) && (
 										<div className="image-item__btn-wrapper absolute top-0 right-0 bg-blue-400/40 bg-opacity-10 w-full flex justify-around items-center">

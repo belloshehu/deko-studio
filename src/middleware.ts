@@ -30,12 +30,8 @@ export default async function middleware(req: NextRequest) {
 	// 5. Redirect to /dashboard if the user is authenticated
 	// to prevent authenticated user from visiting login or signup page
 	if (isPublicRoute && isValidSession) {
-		let redirectUrl = "/";
-		if (session.user.role === "admin") {
-			redirectUrl = "/dashboard/admin";
-		} else {
-			redirectUrl = "/dashboard/user";
-		}
+		let redirectUrl = "/studio";
+
 		return NextResponse.redirect(new URL(redirectUrl, req.url));
 	}
 

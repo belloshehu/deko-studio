@@ -19,7 +19,7 @@ export function NavButton({
 			{...props}
 			variant={"ghost"}
 			className={cn(className, {
-				"bg-green-100 rounded-sm py-2": isActivePath(currentPathname, pathname),
+				"bg-blue-100 rounded-sm py-2": isActivePath(currentPathname, pathname),
 			})}
 		>
 			{children}

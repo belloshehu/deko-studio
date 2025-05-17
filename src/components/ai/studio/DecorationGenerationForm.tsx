@@ -18,7 +18,7 @@ import FormInputField from "@/components/form-fields/FormInput";
 import { GenerateContentResponse } from "@google/genai";
 import FormMultiSelect from "@/components/form-fields/FormMultiSelect";
 import { NEXT_PUBLIC_PROD_BASE_URL } from "@/config";
-import { Loader, Plus } from "lucide-react";
+import { Loader } from "lucide-react";
 
 export default function DecorationGnerationForm({
 	onClose,
@@ -80,7 +80,8 @@ export default function DecorationGnerationForm({
 			<form
 				onSubmit={handleSubmit(onSubmit)}
 				className={cn(
-					"flex flex-col justify-center items-center text-left w-full gap-3"
+					"flex flex-col justify-center items-center text-left w-full gap-3",
+					className
 				)}
 			>
 				{/* images */}
@@ -91,7 +92,7 @@ export default function DecorationGnerationForm({
 						type="text"
 						id="eventType"
 						placeholder="Event type"
-						errorMessage={errors.eventType?.message}
+						//errorMessage={errors.eventType?.message}
 					/>
 					<FormMultiSelect
 						label=""
@@ -120,7 +121,7 @@ export default function DecorationGnerationForm({
 						id="description"
 						placeholder="Optional prompt for the event center decoration"
 						errorMessage={errors.description?.message}
-						className="w-full max-w-full h-full p-2 rounded-full border-[1px] flex items-center"
+						className="w-full max-w-full h-full p-4 rounded-full border-[1px] flex items-center align-middle"
 					/>
 
 					<Button

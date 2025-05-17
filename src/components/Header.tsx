@@ -1,26 +1,19 @@
 "use client";
 import Link from "next/link";
-import SearchInput from "./SearchInput";
 import { useIsMobile } from "@/hooks/use-mobile";
 import Brand from "@/components/Brand";
-import { cn, isActivePath, resolveSearchPlaceholder } from "@/lib/utils";
+import { cn, isActivePath } from "@/lib/utils";
 import NavigationDrawer from "./NavigationDrawer";
 import { Button } from "./ui/button";
 import { usePathname } from "next/navigation";
 import { navItems } from "@/constants/navigation";
-import { useEffect, useState } from "react";
 import useSession from "@/lib/session/use-session";
 import ProfileDropdownMenu from "./ProfileDropdownMenu";
 
 export default function Header() {
 	const isMobile = useIsMobile();
 	const pathname = usePathname();
-	const [placeholder, setPlaceholder] = useState("Search for event centers");
 	const { session } = useSession();
-
-	useEffect(() => {
-		setPlaceholder(resolveSearchPlaceholder(pathname));
-	}, [pathname]);
 
 	if (pathname === "/login" || pathname === "/signup") return null;
 	return (
@@ -32,16 +25,12 @@ export default function Header() {
 		>
 			<Brand />
 
-			{/* {!isMobile && (
-        <SearchInput placeholder={placeholder} className="md:w-[20%] w-[80%] m-auto" />
-      )} */}
-
 			<nav className="items-center gap-5 hidden md:flex flex-1">
 				{navItems.map(({ name, path }) => (
 					<Link
 						key={path}
 						className={cn("hover:bg-white p-2 rounded-md", {
-							"bg-green-100 rounded-sm py-2 px-5": isActivePath(path, pathname),
+							"bg-blue-100 rounded-sm py-2 px-5": isActivePath(path, pathname),
 						})}
 						href={path}
 					>
