@@ -61,21 +61,21 @@ export default function Hero() {
 					</div>
 					<div className="w-full relative h-screen bg-blue-500 flex justify-center items-center rounded-full">
 						<Image
-							src="/event2.jpg"
+							src="/event-deco.jpg"
 							alt="hero image"
 							width={300}
 							height={300}
 							className="object-cover w-2/3 border-2 border-blue-400 rounded-md absolute top-20 left-0"
 						/>
 						<Image
-							src="/event2.jpg"
+							src="/event-deco2.jpg"
 							alt="hero image"
 							width={300}
 							height={300}
 							className="object-cover rounded-md absolute w-1/2 top-22 right-0 border-4 border-blue-400"
 						/>
 						<Image
-							src="/event2.jpg"
+							src="/event-deco3.jpg"
 							alt="hero image"
 							width={300}
 							height={300}
