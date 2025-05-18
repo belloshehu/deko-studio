@@ -20,6 +20,8 @@ import FormMultiSelect from "@/components/form-fields/FormMultiSelect";
 import { NEXT_PUBLIC_PROD_BASE_URL } from "@/config";
 import { Loader } from "lucide-react";
 import { colors } from "@/constants/colors";
+import FormSelect from "@/components/form-fields/FormSelect";
+import { eventTypes } from "@/constants/event-types";
 
 export default function DecorationGnerationForm({
 	setContents,
@@ -66,6 +68,7 @@ export default function DecorationGnerationForm({
 	const {
 		handleSubmit,
 		control,
+		register,
 		formState: { errors },
 	} = form;
 
@@ -81,13 +84,19 @@ export default function DecorationGnerationForm({
 			>
 				{/* images */}
 				<div className="flex flex-col md:flex-row w-full gap-2 justify-center items-center flex-wrap">
-					<FormInputField
+					{/* <FormInputField
 						control={control}
 						name="eventType"
 						type="text"
 						id="eventType"
 						placeholder="Event type"
 						//errorMessage={errors.eventType?.message}
+					/> */}
+					<FormSelect
+						control={control}
+						options={eventTypes}
+						register={register("eventType")}
+						placeholder="Select Event "
 					/>
 					<FormMultiSelect
 						label=""

@@ -1,0 +1,17 @@
+export const eventTypes = [
+	{ label: "Birthday", value: "birthday" },
+	{ label: "Wedding", value: "wedding" },
+	{ label: "Corporate", value: "corporate" },
+	{ label: "Conference", value: "conference" },
+	{ label: "Party", value: "party" },
+	{ label: "Festival", value: "festival" },
+	{ label: "Concert", value: "concert" },
+	{ label: "Exhibition", value: "exhibition" },
+	{ label: "Trade Show", value: "trade_show" },
+	{ label: "Fundraiser", value: "fundraiser" },
+	{ label: "Charity", value: "charity" },
+	{ label: "Gala", value: "gala" },
+	{ label: "Reception", value: "reception" },
+	{ label: "Anniversary", value: "anniversary" },
+	{ label: "Graduation", value: "graduation" },
+];
