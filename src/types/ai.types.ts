@@ -1,4 +1,4 @@
 export interface StreamingChunks {
-  text: string;
-  image: any;
+	text: string;
+	image: any;
 }

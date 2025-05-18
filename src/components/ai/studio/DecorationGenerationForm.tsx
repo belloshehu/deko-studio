@@ -19,17 +19,15 @@ import { GenerateContentResponse } from "@google/genai";
 import FormMultiSelect from "@/components/form-fields/FormMultiSelect";
 import { NEXT_PUBLIC_PROD_BASE_URL } from "@/config";
 import { Loader } from "lucide-react";
+import { colors } from "@/constants/colors";
 
 export default function DecorationGnerationForm({
-	onClose,
 	setContents,
 	className,
-	setShowForm,
 }: {
 	onClose?: () => void;
 	setContents: (contents: GenerateContentResponse) => void;
 	className?: string;
-	setShowForm?: (showForm: boolean) => void;
 }) {
 	const [isPending, setIsPending] = useState(false);
 	const { publicRequest } = useAxios();
@@ -41,7 +39,6 @@ export default function DecorationGnerationForm({
 
 	const onSubmit = async (data: DecorationGenerationSchemaType) => {
 		// upload the images to cloudinary
-		const image = data.image[0].data_url;
 		const formData = new FormData();
 		formData.append("image", data.image[0].data_url);
 		const colors = data.colors ? data.colors.join(", ") : "any color";
@@ -56,16 +53,14 @@ export default function DecorationGnerationForm({
 				formData
 			);
 			setContents(uploadedImage.data.data);
-			setShowForm && setShowForm(false); // hide the form
-			console.log(formData);
+			// eslint-disable @typescript-eslint/no-explicit-any
 		} catch (error: any) {
+			// eslint-disable @typescript-eslint/no-explicit-any
 			toast.error(error?.response?.data?.message || "Error generating image");
 			console.error("Error generating image", error);
 		} finally {
 			setIsPending(false);
 		}
-		// close modal
-		onClose && onClose();
 	};
 
 	const {
@@ -98,11 +93,7 @@ export default function DecorationGnerationForm({
 						label=""
 						name="colors"
 						control={control}
-						options={[
-							{ label: "red", value: "red" },
-							{ label: "blue", value: "blue" },
-							{ label: "green", value: "green" },
-						]}
+						options={colors}
 						placeholder={"Select colors"}
 						emptyMessage="No events found"
 					/>

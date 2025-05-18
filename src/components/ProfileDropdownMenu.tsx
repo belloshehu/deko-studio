@@ -51,12 +51,12 @@ export default function ProfileDropdownMenu() {
 			<DropdownMenuTrigger>
 				<UserCircle
 					size={34}
-					className=" hover:scale-105 duration-300 transition-all"
+					className=" hover:scale-105 duration-300 transition-all text-blue-400"
 				/>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="end">
 				<DropdownMenuLabel className="flex items-center gap-2 p-2">
-					<UserCircle size={30} className="text-gray-500" />
+					<UserCircle size={30} className="text-blue-500" />
 					<div className="flex flex-col">
 						<span className=" text-gray-900">
 							{firstName} {lastName} <small>({role})</small>
@@ -69,7 +69,7 @@ export default function ProfileDropdownMenu() {
 				<DropdownMenuSeparator />
 				<DropdownMenuItem
 					onClick={async () => {
-						// mutateAsync({ protectedRequest: protectedRequest });
+						mutateAsync({ protectedRequest: protectedRequest });
 					}}
 				>
 					Log out

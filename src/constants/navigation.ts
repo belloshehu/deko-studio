@@ -36,18 +36,14 @@ export const adminNavItems: NavigationItemType[] = [
 
 export const userNavItems: NavigationItemType[] = [
 	{
-		name: "Save",
-		path: "/dashboard/user/bookings",
+		name: "Saved decorations",
+		path: "/studio/saved",
 		active: true,
 	},
-	{
-		name: "Settings",
-		path: "/dashboard/user/settings",
-		active: false,
-	},
+
 	{
 		name: "Messages",
-		path: "/dashboard/user/messages",
+		path: "/studio/messages",
 		active: false,
 	},
 	{
@@ -59,15 +55,15 @@ export const userNavItems: NavigationItemType[] = [
 
 export const studioNavItems: NavigationItemType[] = [
 	{
-		name: "Workspace",
-		path: "/studio",
+		name: "Decoration",
+		path: "/decoration",
 	},
 	{
 		name: "Saved",
-		path: "/studio/saved",
+		path: "/saved",
 	},
 	{
 		name: "members",
-		path: "/studio/members",
+		path: "/members",
 	},
 ];

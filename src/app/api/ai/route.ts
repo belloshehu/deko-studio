@@ -6,7 +6,7 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
 
 export async function POST(request: Request) {
-	const { prompt, image } = await request.json();
+	const { prompt } = await request.json();
 	// validate the request
 	try {
 		if (!prompt) {

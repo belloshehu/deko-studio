@@ -21,6 +21,8 @@ interface FormTextareaProps {
 	value?: string;
 	control: Control<any>;
 	name: string;
+	cols?: number;
+	rows?: number;
 }
 
 export default function FormTextarea({

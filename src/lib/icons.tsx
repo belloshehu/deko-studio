@@ -7,11 +7,9 @@ import {
 	Flower,
 	Image,
 	MessageCircle,
-	Settings,
 	SettingsIcon,
 	StarIcon,
 	Upload,
-	User,
 	UserIcon,
 	Users,
 } from "lucide-react";

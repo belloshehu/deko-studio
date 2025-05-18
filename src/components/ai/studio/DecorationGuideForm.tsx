@@ -13,22 +13,17 @@ import {
 	decorationGuideSchema,
 } from "@/schemas/ai/decoration-guide.schema";
 import { useState } from "react";
-import FormInputField from "@/components/form-fields/FormInput";
 import { GenerateContentResponse } from "@google/genai";
-import FormMultiSelect from "@/components/form-fields/FormMultiSelect";
 import { NEXT_PUBLIC_PROD_BASE_URL } from "@/config";
 import { Plus } from "lucide-react";
 
 export default function EventCenterDecorationForm({
-	onClose,
 	setContents,
 	className,
-	setShowForm,
 }: {
 	onClose?: () => void;
 	setContents: (contents: GenerateContentResponse) => void;
 	className?: string;
-	setShowForm?: (showForm: boolean) => void;
 }) {
 	const [isPending, setIsPending] = useState(false);
 	const { publicRequest } = useAxios();
@@ -50,16 +45,13 @@ export default function EventCenterDecorationForm({
 				}
 			);
 			setContents(uploadedImage.data.data);
-			setShowForm && setShowForm(false); // hide the form
 		} catch (error: any) {
+			// eslint-disable @typescript-eslint/no-explicit-any
 			toast.error(error?.response?.data?.message || "Error generating image");
 			console.error("Error generating image", error);
 		} finally {
 			setIsPending(false);
 		}
-
-		// close modal
-		onClose && onClose();
 	};
 
 	const {
@@ -74,34 +66,10 @@ export default function EventCenterDecorationForm({
 			<form
 				onSubmit={handleSubmit(onSubmit)}
 				className={cn(
-					"flex justify-center items-center text-left w-full self-start"
-					// className
+					"flex justify-center items-center text-left w-full self-start",
+					className
 				)}
 			>
-				{/* images */}
-				{/* <div className="flex flex-col md:flex-row w-full gap-2">
-          <FormInputField
-            control={control}
-            name="eventType"
-            type="text"
-            id="eventType"
-            placeholder="Event type"
-            errorMessage={errors.eventType?.message}
-          />
-
-          <FormMultiSelect
-            label=""
-            name="colors"
-            control={control}
-            options={[
-              { label: "red", value: "red" },
-              { label: "blue", value: "blue" },
-              { label: "green", value: "green" },
-            ]}
-            placeholder={"Select colors"}
-            emptyMessage="No events found"
-          />
-        </div> */}
 				<div className="relative flex items-center justify-center  h-fit p-0 rounded-full w-[80%] mt-14 ">
 					<FormTextarea
 						control={control}

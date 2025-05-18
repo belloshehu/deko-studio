@@ -9,17 +9,7 @@ import {
 	DrawerTrigger,
 } from "@/components/ui/drawer";
 import { Button } from "./ui/button";
-import {
-	ChevronRight,
-	Drum,
-	Flower,
-	Handshake,
-	Home,
-	MenuIcon,
-	Table,
-	UserCircle,
-	Users,
-} from "lucide-react";
+import { ChevronRight, Flower, Home, MenuIcon, UserCircle } from "lucide-react";
 import Brand from "@/components/Brand";
 import { motion } from "motion/react";
 import Link from "next/link";
@@ -73,7 +63,7 @@ export default function NavigationDrawer() {
 									variant={"ghost"}
 									size={"icon"}
 									className="ml-auto rounded-full"
-									onClick={(e) => {
+									onClick={() => {
 										setToggle(!toggle);
 									}}
 								>
@@ -106,38 +96,6 @@ export default function NavigationDrawer() {
 								<Link href="/">Home</Link>
 							</NavButton>
 							<NavButton
-								onClick={() => setToggleDrawer(false)}
-								pathname="/event-centers"
-								currentPathname={pathname}
-							>
-								<Table className="text-inherit text-3xl" size={24} />
-								<Link href="/event-centers">Event centers</Link>
-							</NavButton>
-							<NavButton
-								pathname="/entertainers"
-								currentPathname={pathname}
-								onClick={() => setToggleDrawer(false)}
-							>
-								<Drum className="text-inherit text-3xl" size={24} />
-								<Link href="/entertainers">Entertainers</Link>
-							</NavButton>
-							<NavButton
-								pathname="/events"
-								currentPathname={pathname}
-								onClick={() => setToggleDrawer(false)}
-							>
-								<Users className="text-inherit text-3xl" size={24} />
-								<Link href="/events">Events</Link>
-							</NavButton>
-							<NavButton
-								pathname="/partnership"
-								currentPathname={pathname}
-								onClick={() => setToggleDrawer(false)}
-							>
-								<Handshake className="text-inherit text-3xl" size={24} />
-								<Link href="/partnership">Partnership</Link>
-							</NavButton>
-							<NavButton
 								pathname="/studio"
 								currentPathname={pathname}
 								onClick={() => setToggleDrawer(false)}
@@ -154,7 +112,7 @@ export default function NavigationDrawer() {
 					{session?.isLoggedIn ? (
 						<Button
 							onClick={async () => {
-								// mutateAsync({ protectedRequest: protectedRequest });
+								mutateAsync({ protectedRequest: protectedRequest });
 							}}
 						>
 							Logout

@@ -1,21 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import Title from "@/components/Title";
 import { GenerateContentResponse } from "@google/genai";
 import DecorationGnerationForm from "./DecorationGenerationForm";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
-import { cn } from "@/lib/utils";
-import { Share, Share2 } from "lucide-react";
+import { Loader, Share2 } from "lucide-react";
+import { useGetWorkspaces } from "@/hooks/service-hooks/worspace.hook";
+import Title from "@/components/Title";
+import WorkspaceList from "./workspace/WorkspaceList";
 
 export default function StudioGenerateDecoration() {
+	const { data, isLoading } = useGetWorkspaces();
 	const [contents, setContents] = useState<GenerateContentResponse | null>(
 		null
 	);
-	const [showForm, setShowForm] = useState(true);
 
 	// handle image download
 	const handleImageDownload = (imageData: string) => {
@@ -27,20 +28,9 @@ export default function StudioGenerateDecoration() {
 		document.body.removeChild(link);
 		toast.success("Image saved successfully");
 	};
-
 	return (
 		<div className="flex flex-col gap-4">
-			{/* {!contents && (
-				<Title
-					title="Generate decoration"
-					description="Generate a decoration by uploading image of an event center and/or speciying the event type, e.g, birthday, wedding"
-				/>
-			)} */}
-			<DecorationGnerationForm
-				setContents={setContents}
-				// className={cn("", { "-right-[100%]": !showForm })} // hide form when not showing
-				setShowForm={setShowForm}
-			/>
+			<DecorationGnerationForm setContents={setContents} />
 			{contents?.candidates && (
 				<div className="w-full justify-center items-center flex flex-col gap-4">
 					{contents.candidates[0].content?.parts?.map((part, index: number) => {
@@ -93,15 +83,6 @@ export default function StudioGenerateDecoration() {
 					})}
 				</div>
 			)}
-
-			{/* {!showForm && (
-				<Button
-					onClick={() => setShowForm(true)}
-					className="bg-green-500 fixed bottom-10 right-10 w-fit"
-				>
-					Generate another decoration
-				</Button>
-			)} */}
 		</div>
 	);
 }

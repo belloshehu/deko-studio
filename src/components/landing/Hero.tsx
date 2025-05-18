@@ -2,14 +2,12 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { motion } from "motion/react";
 import { alfa_Slab_One } from "@/app/fonts";
 import Image from "next/image";
 // import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 export default function Hero() {
-	const router = useRouter();
 	return (
 		<section className="flex flex-col items-center rounded-none justify-center h-screen py-2 md:pt-10 gap-10 w-full text-center bg-white bg-blend-overlay bg-center  bg-no-repeat bg-cover">
 			<div className="px-5 md:p-20 rounded-md flex flex-col items-center justify-center w-full h-fit gap-10">
