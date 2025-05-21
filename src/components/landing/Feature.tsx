@@ -34,9 +34,9 @@ export default function Feature({
 			</motion.h3>
 			<motion.p
 				className="text-sm text-gray-600"
-				initial={{ transform: "translateX(20%)", scale: 0.9, opacity: 1 }}
+				initial={{ transform: "translateX(10%)", scale: 0.9, opacity: 1 }}
 				whileInView={{ transform: "translateX(0)", scale: 1, opacity: 1 }}
-				exit={{ transform: "translateX(20%)", scale: 0.6, opacity: 0.1 }}
+				exit={{ transform: "translateX(10%)", scale: 0.6, opacity: 0.1 }}
 				transition={{ delay: 0.6 }}
 			>
 				{description}
