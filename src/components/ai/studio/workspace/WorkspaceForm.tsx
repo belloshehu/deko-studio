@@ -2,15 +2,9 @@
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-	loginFormValidationSchema,
-	LoginFormValidationSchemaType,
-} from "@/schemas/auth.schema";
-import { useLogin } from "@/hooks/service-hooks/auth.hook";
 import { useAxios } from "@/hooks/use-axios";
 import { Form } from "@/components/ui/form";
 import { cn } from "@/lib/utils";
-import FormPasswordField from "@/components/form-fields/FormPasswordField";
 import FormInputField from "@/components/form-fields/FormInput";
 import { LoadingDialog } from "@/components/LoadingDialog";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";

@@ -14,7 +14,6 @@ import {
 	DecorationGenerationSchemaType,
 } from "@/schemas/ai/decoration-generation.schema";
 import { useState } from "react";
-import FormInputField from "@/components/form-fields/FormInput";
 import { GenerateContentResponse } from "@google/genai";
 import FormMultiSelect from "@/components/form-fields/FormMultiSelect";
 import { NEXT_PUBLIC_PROD_BASE_URL } from "@/config";
@@ -84,14 +83,6 @@ export default function DecorationGnerationForm({
 			>
 				{/* images */}
 				<div className="flex flex-col md:flex-row w-full gap-2 justify-center items-center flex-wrap">
-					{/* <FormInputField
-						control={control}
-						name="eventType"
-						type="text"
-						id="eventType"
-						placeholder="Event type"
-						//errorMessage={errors.eventType?.message}
-					/> */}
 					<FormSelect
 						control={control}
 						options={eventTypes}

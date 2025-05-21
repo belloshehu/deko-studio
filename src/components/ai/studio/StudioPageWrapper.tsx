@@ -4,7 +4,6 @@ import { useGetWorkspaces } from "@/hooks/service-hooks/worspace.hook";
 import WorkspaceList from "./workspace/WorkspaceList";
 import { cn } from "@/lib/utils";
 import Title from "@/components/Title";
-import { Button } from "@/components/ui/button";
 import WorkspaceForm from "./workspace/WorkspaceForm";
 
 export default function StudioPageWrapper({

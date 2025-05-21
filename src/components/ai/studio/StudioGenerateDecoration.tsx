@@ -7,10 +7,8 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
-import { Loader, Share2 } from "lucide-react";
+import { Share2 } from "lucide-react";
 import { useGetWorkspaces } from "@/hooks/service-hooks/worspace.hook";
-import Title from "@/components/Title";
-import WorkspaceList from "./workspace/WorkspaceList";
 
 export default function StudioGenerateDecoration() {
 	const { data, isLoading } = useGetWorkspaces();

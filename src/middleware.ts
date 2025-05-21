@@ -27,7 +27,7 @@ export default async function middleware(req: NextRequest) {
 	if (isProtectedRoute && !isValidSession) {
 		return NextResponse.redirect(new URL("/login", req.url));
 	}
-	// 5. Redirect to /dashboard if the user is authenticated
+	// 5. Redirect to /studio if the user is authenticated
 	// to prevent authenticated user from visiting login or signup page
 	if (isPublicRoute && isValidSession) {
 		const redirectUrl = "/studio";

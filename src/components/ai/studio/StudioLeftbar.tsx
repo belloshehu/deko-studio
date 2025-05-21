@@ -3,7 +3,6 @@ import { NavButton } from "@/components/NavButton";
 import { studioNavItems } from "@/constants/navigation";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
-import WorkspaceDropdownMenu from "./WorkspaceDropdownMenu";
 
 export default function StudioLeftbar() {
 	const pathname = usePathname();
