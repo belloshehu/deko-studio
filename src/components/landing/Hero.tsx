@@ -47,7 +47,7 @@ export default function Hero() {
 						>
 							Let enjoy creative decoration with dekostudio
 						</motion.p>
-						<Link href="/event-centers">
+						<Link href="/studio">
 							<Button
 								variant={"secondary"}
 								className="bg-blue-400 text-white"
