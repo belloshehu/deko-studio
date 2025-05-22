@@ -37,18 +37,18 @@ export const adminNavItems: NavigationItemType[] = [
 export const userNavItems: NavigationItemType[] = [
 	{
 		name: "Saved decorations",
-		path: "/studio/saved",
+		path: "#",
 		active: true,
 	},
 
 	{
 		name: "Messages",
-		path: "/studio/messages",
+		path: "#",
 		active: false,
 	},
 	{
 		name: "Notifications",
-		path: "/dashboard/user/notifications",
+		path: "#",
 		active: true,
 	},
 ];

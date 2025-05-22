@@ -38,7 +38,7 @@ export default function NavigationDrawer() {
 	return (
 		<Drawer direction="left" open={toggleDrawer} onOpenChange={setToggleDrawer}>
 			<DrawerTrigger>
-				<MenuIcon size={34} className="text-green-600" />
+				<MenuIcon size={34} className="text-blue-400" />
 				<span className="sr-only">nav drawer</span>
 			</DrawerTrigger>
 			<DrawerContent>
