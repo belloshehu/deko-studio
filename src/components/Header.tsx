@@ -27,17 +27,24 @@ export default function Header() {
 			<Brand />
 
 			<nav className="items-center gap-5 hidden md:flex flex-1">
-				{navItems.map(({ name, path }) => (
-					<Link
-						key={path}
-						className={cn("hover:bg-white p-2 rounded-md", {
-							"bg-blue-100 rounded-sm py-2 px-5": isActivePath(path, pathname),
-						})}
-						href={path}
-					>
-						{name}
-					</Link>
-				))}
+				{navItems.map(({ name, path }) => {
+					return (
+						<Link
+							key={path}
+							className={cn("hover:bg-white p-2 rounded-md", {
+								"bg-blue-100 rounded-sm py-2 px-5": isActivePath(
+									path,
+									pathname
+								),
+								"bg-blue-200 rounded-sm py-2 px-5":
+									pathname.includes(path) === true,
+							})}
+							href={path}
+						>
+							{name}
+						</Link>
+					);
+				})}
 			</nav>
 
 			<NavButton

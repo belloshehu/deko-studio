@@ -1,13 +1,12 @@
+"use client";
 import WorkspaceInviteForm from "@/components/ai/studio/workspace/InviteForm";
 import PageWrapper from "@/components/page/PageWrapper";
 import Title from "@/components/Title";
-import { Button } from "@/components/ui/button";
-import { MessageCircle } from "lucide-react";
 
 export default function MembersPage() {
 	const invites = [];
 	return (
-		<PageWrapper className="md:px-5">
+		<PageWrapper className="p-2 pt-20 md:px-5">
 			<header className="flex flex-col gap-5 md:flex-row justify-between w-full ">
 				<Title
 					title="Members"

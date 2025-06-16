@@ -14,10 +14,12 @@ export default function Workspace({
 	createdAt,
 }: WorkspaceProps) {
 	return (
-		<article className="flex flex-col gap-2 justify-start items-start p-3 rounded-md w-full bg-white">
+		<article className="flex flex-col gap-2 justify-start items-start p-3 rounded-md w-full bg-white shadow-sm">
 			<h3 className="font-semibold ">{name}</h3>
 			<p>{description}</p>
-			<small>{formatDate(createdAt)}</small>
+			<small className="bg-gray-100 px-2 rounded-2xl">
+				{formatDate(createdAt)}
+			</small>
 			<Link
 				className="bg-blue-400 p-2 px-3 rounded-md text-white"
 				href={`/studio/${_id}/decoration`}

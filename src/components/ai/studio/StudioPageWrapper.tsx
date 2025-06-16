@@ -16,7 +16,7 @@ export default function StudioPageWrapper({
 	return (
 		<div
 			className={cn(
-				"flex flex-col items-start justify-start h-full pt-20 gap-5",
+				"flex flex-col items-start justify-start h-full pt-20 gap-5 w-full",
 				className
 			)}
 		>

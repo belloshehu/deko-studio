@@ -17,7 +17,7 @@ export default function WorkspaceDropdownMenu({
 	options: SelectDataType[];
 }) {
 	const [selectedValue, setSelectedValue] = React.useState<string | null>(null);
-	console.log("Selected value:", selectedValue);
+
 	return (
 		<Select onValueChange={setSelectedValue}>
 			<SelectTrigger className="w-[180px]">

@@ -6,25 +6,28 @@ import DecorationGnerationForm from "./DecorationGenerationForm";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import ReactMarkdown from "react-markdown";
 import { Share2 } from "lucide-react";
-import { useGetWorkspaces } from "@/hooks/service-hooks/worspace.hook";
+import axios from "axios";
+import fileDownload from "js-file-download";
 
 export default function StudioGenerateDecoration() {
-	const { data, isLoading } = useGetWorkspaces();
 	const [contents, setContents] = useState<GenerateContentResponse | null>(
 		null
 	);
 
 	// handle image download
 	const handleImageDownload = (imageData: string) => {
-		const link = document.createElement("a");
-		link.href = `data:image/png;base64,${imageData}`;
-		link.download = new Date().toISOString() + ".png";
-		document.body.appendChild(link);
-		link.click();
-		document.body.removeChild(link);
-		toast.success("Image saved successfully");
+		axios
+			.get(imageData, {
+				responseType: "blob",
+			})
+			.then((res) => {
+				fileDownload(res.data, "decoration_" + Date.now() + ".png");
+				toast.success("Image saved successfully");
+			})
+			.catch((error) => {
+				toast.error("Error saving image");
+			});
 	};
 	return (
 		<div className="flex flex-col gap-4 relative">
@@ -51,13 +54,13 @@ export default function StudioGenerateDecoration() {
 							return (
 								<div
 									key={index}
-									className="mb-4 w-full my-10 flex flex-col gap-5"
+									className="mb-4 w-full my-10 flex flex-col md:flex-row gap-5"
 								>
 									{/* <h1>Decorated hall by AI</h1> */}
 									<Image
 										src={image}
 										alt="Decoration"
-										className="h-auto object-cover w-full md:w-3/5 "
+										className="h-auto object-contain aspect-square rounded-2xl w-full md:w-3/5 "
 										width={500}
 										height={500}
 									/>
@@ -65,7 +68,7 @@ export default function StudioGenerateDecoration() {
 									<div className="flex gap-2 mb-8">
 										<Button
 											onClick={() => handleImageDownload(image)}
-											className="w-fit"
+											className="w-fit cursor-pointer"
 										>
 											Download
 										</Button>

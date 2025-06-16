@@ -49,20 +49,23 @@ export default function StudioLeftbar() {
 	};
 
 	return (
-		<aside className="flex flex-col gap-4 items-start justify-start  mt-24  min-h-[80vh] bg-blue-400 h-fit p-5 pt-20 rounded-3xl border-[1px]   w-full ">
+		<aside className="hidden md:flex flex-col gap-4 items-start justify-start  mt-24  min-h-[80vh] bg-blue-400 h-fit p-5 pt-20 rounded-3xl border-[1px]   w-full ">
 			{renderNavItems()}
 			<div
 				className={cn(" w-full cursor-pointer ", {
 					"mt-auto": pathname !== "/studio",
 				})}
 			>
-				{isLoading ? (
-					<Loader className="animate-spin" />
-				) : (
-					<div className="flex items-center gap-2">
-						<Folder /> <small>{data?.name}</small>
-					</div>
-				)}
+				{/* Only visible inside a workspace */}
+				{id ? (
+					isLoading ? (
+						<Loader className="animate-spin" />
+					) : (
+						<div className="flex items-center gap-2">
+							<Folder /> <small>{data?.name}</small>
+						</div>
+					)
+				) : null}
 				<Link href={`/studio`} className="w-full">
 					<NavButton
 						pathname={"/studio"}
