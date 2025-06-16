@@ -9,7 +9,6 @@ export async function POST(request: Request) {
 	const data = await request.formData();
 	const prompt = data.get("prompt")?.toString();
 	const image = data.get("image")?.toString();
-	console.log("Received request to generate decoration", image, data);
 	// validate the prompt and image
 	try {
 		if (!prompt) {

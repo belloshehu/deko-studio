@@ -14,6 +14,7 @@ import { DecorationPayloadType } from "@/types/decoration.types";
 import { useParams } from "next/navigation";
 import useSession from "@/lib/session/use-session";
 import { useAxios } from "@/hooks/use-axios";
+import { Download, Save } from "lucide-react";
 
 export default function StudioGenerateDecoration() {
 	const [contents, setContents] = useState<GenerateContentResponse | null>(
@@ -95,16 +96,18 @@ export default function StudioGenerateDecoration() {
 										<Button
 											onClick={() => handleImageDownload(image)}
 											className="w-fit cursor-pointer"
+											variant={"outline"}
 										>
-											Download
+											<Download /> Download
 										</Button>
 										{/* Rendered when logged in and in workspace */}
 										{isLoggedIn && (
 											<Button
 												onClick={() => handleSave(image)}
 												className="w-fit bg-blue-400"
+												disabled={isPending}
 											>
-												{isPending ? "Saving..." : "Save Decoration"}
+												<Save /> {isPending ? "Saving..." : "Save Decoration"}
 											</Button>
 										)}
 									</div>
