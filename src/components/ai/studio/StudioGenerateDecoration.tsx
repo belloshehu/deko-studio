@@ -6,7 +6,6 @@ import DecorationGnerationForm from "./DecorationGenerationForm";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { Share2 } from "lucide-react";
 import axios from "axios";
 import fileDownload from "js-file-download";
 import useFileUpload from "@/hooks/use-file-upload";
@@ -108,9 +107,6 @@ export default function StudioGenerateDecoration() {
 												{isPending ? "Saving..." : "Save Decoration"}
 											</Button>
 										)}
-										<Button variant={"secondary"} className="p-0">
-											<Share2 className="text-blue-400" size={50} />
-										</Button>
 									</div>
 								</div>
 							);

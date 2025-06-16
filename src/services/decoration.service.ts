@@ -44,6 +44,37 @@ class DecorationServiceAPI {
 		);
 		return data.data;
 	}
+
+	// delete decoration
+	static async deleteDecoration({
+		protectedRequest,
+		decorationId,
+	}: {
+		protectedRequest: AxiosInstance;
+		decorationId: string;
+	}) {
+		const { data } = await protectedRequest.delete(
+			`/decorations/${decorationId}`
+		);
+		return data.data;
+	}
+
+	// update decoration
+	static async updateDecoration({
+		protectedRequest,
+		payload,
+		id,
+	}: {
+		protectedRequest: AxiosInstance;
+		payload: { name: string; description: string };
+		id: string;
+	}) {
+		const { data } = await protectedRequest.patch<GetDecorationResponseType>(
+			`/decorations/${id}`,
+			payload
+		);
+		return data.data;
+	}
 }
 
 export default DecorationServiceAPI;

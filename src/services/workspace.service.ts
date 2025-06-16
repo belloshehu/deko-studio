@@ -35,24 +35,24 @@ class WorkspaceServiceAPI {
 	static async updateWorkspace({
 		protectedRequest,
 		payload,
+		id,
 	}: {
 		protectedRequest: AxiosInstance;
-		payload: { id: string; name: string; description: string };
+		payload: { name: string; description: string };
+		id: string;
 	}) {
-		const { data } = await protectedRequest.patch(
-			`/workspaces/${payload.id}`,
-			payload
-		);
+		const { data } = await protectedRequest.patch(`/workspaces/${id}`, payload);
 		return data.data;
 	}
+
 	static async deleteWorkspace({
 		protectedRequest,
-		payload,
+		id,
 	}: {
 		protectedRequest: AxiosInstance;
-		payload: { id: string };
+		id: string;
 	}) {
-		const { data } = await protectedRequest.delete(`/workspaces/${payload.id}`);
+		const { data } = await protectedRequest.delete(`/workspaces/${id}`);
 		return data.data;
 	}
 }

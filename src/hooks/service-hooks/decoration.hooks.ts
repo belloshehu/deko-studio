@@ -37,3 +37,33 @@ export const useGetDecorations = (workspaceId: string) => {
 		queryKey: ["decorations", workspaceId],
 	});
 };
+
+export const useDeleteDecoration = () => {
+	const queryClient = useQueryClient();
+	const { protectedRequest } = useAxios();
+	return useMutation({
+		mutationFn: DecorationServiceAPI.deleteDecoration,
+		onSuccess: () => {
+			toast.success("Decoration deleted successfully");
+			queryClient.invalidateQueries({ queryKey: ["decorations"] });
+		},
+		onError: (error: any) => {
+			toast.error("Failed to delete the decoration");
+		},
+	});
+};
+
+export const useUpdateDecoration = () => {
+	const queryClient = useQueryClient();
+	const { protectedRequest } = useAxios();
+	return useMutation({
+		mutationFn: DecorationServiceAPI.updateDecoration,
+		onSuccess: () => {
+			toast.success("Decoration updated successfully");
+			queryClient.invalidateQueries({ queryKey: ["decorations"] });
+		},
+		onError: (error: any) => {
+			toast.error("Failed to update the decoration");
+		},
+	});
+};
