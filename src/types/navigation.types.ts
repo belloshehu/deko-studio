@@ -1,5 +1,6 @@
 export interface NavigationItemType {
-  path: string;
-  name: string;
-  active?: boolean;
+	path: string;
+	name: string;
+	active?: boolean;
+	hidden?: boolean;
 }

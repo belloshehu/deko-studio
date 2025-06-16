@@ -40,3 +40,33 @@ export const useGetWorkspace = (workspaceId: string) => {
 		queryKey: ["workspace", workspaceId],
 	});
 };
+
+// delete workspace hook
+export const useDeleteWorkspace = () => {
+	const queryClient = useQueryClient();
+	return useMutation({
+		mutationFn: WorkspaceServiceAPI.deleteWorkspace,
+		onSuccess: () => {
+			toast.success("Workspace deleted successfully");
+			queryClient.invalidateQueries({ queryKey: ["workspaces"] });
+		},
+		onError: (error: AxiosError<{ message: string }>) => {
+			toast.error(error.response?.data.message || "Failed to delete workspace");
+		},
+	});
+};
+
+// update workspace hook
+export const useUpdateWorkspace = () => {
+	const queryClient = useQueryClient();
+	return useMutation({
+		mutationFn: WorkspaceServiceAPI.updateWorkspace,
+		onSuccess: () => {
+			toast.success("Workspace updated successfully");
+			queryClient.invalidateQueries({ queryKey: ["workspaces"] });
+		},
+		onError: (error: AxiosError<{ message: string }>) => {
+			toast.error(error.response?.data.message || "Failed to update workspace");
+		},
+	});
+};

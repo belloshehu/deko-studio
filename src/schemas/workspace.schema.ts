@@ -6,3 +6,12 @@ export const WorkspaceValidationSchema = z.object({
 });
 
 export type IWorkspaceDataType = z.infer<typeof WorkspaceValidationSchema>;
+
+export const WorkspaceInviteValidationSchema = z.object({
+	email: z.string().email(),
+	message: z.string(),
+});
+
+export type IWorkspaceInviteDataType = z.infer<
+	typeof WorkspaceInviteValidationSchema
+>;

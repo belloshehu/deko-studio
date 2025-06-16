@@ -6,6 +6,7 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
 
 export async function POST(request: Request) {
+	console.log("Received request to generate decoration", GEMINI_API_KEY);
 	const { prompt } = await request.json();
 	// validate the request
 	try {
@@ -32,7 +33,7 @@ export async function POST(request: Request) {
 				temperature: 0.5,
 			},
 		});
-
+		console.log("result", result);
 		if (!result) {
 			return NextResponse.json(
 				{
@@ -52,6 +53,7 @@ export async function POST(request: Request) {
 			{ status: 201 }
 		);
 	} catch (error) {
+		console.error("Error generating decoration", error);
 		return NextResponse.json(
 			{
 				error: "An error occurred while generating the decoration" + error,

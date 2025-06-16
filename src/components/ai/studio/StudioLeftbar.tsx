@@ -1,55 +1,30 @@
 "use client";
-import { NavButton } from "@/components/NavButton";
-import { studioNavItems } from "@/constants/navigation";
-import Link from "next/link";
+
+import { useGetWorkspace } from "@/hooks/service-hooks/worspace.hook";
+import { useWorkspaceMenu } from "@/hooks/use-workspace-menu";
+import { WorkspaceType } from "@/types/workspace.types";
 import { useParams, usePathname } from "next/navigation";
 
 export default function StudioLeftbar() {
 	const pathname = usePathname();
 
 	const { id } = useParams();
-	console.log(pathname);
-
-	const renderNavItems = () => {
-		if (pathname === "/studio" && !id)
-			return (
-				<NavButton
-					pathname={"/studio"}
-					currentPathname={"/studio"}
-					className="bg-slate-100 capitalize w-full text-left"
-				>
-					<Link href={`/studio`}>Workspaces</Link>
-				</NavButton>
-			);
-		return (
-			<>
-				<NavButton
-					pathname={"/"}
-					currentPathname={"/"}
-					className="bg-slate-100 capitalize w-full text-left"
-				>
-					<Link href={`/studio`}>Workspaces</Link>
-				</NavButton>
-				{studioNavItems.map((item) => {
-					console.log(`/studio/${id}/${item.path}`, pathname);
-					return (
-						<NavButton
-							pathname={`/studio/${id}/${item.path}`}
-							currentPathname={pathname}
-							className="bg-slate-100 capitalize w-full text-left"
-							key={item.path}
-						>
-							<Link href={`/studio/${id}/${item.path}`}>{item.name}</Link>
-						</NavButton>
-					);
-				})}
-			</>
-		);
-	};
+	const { data, isLoading } = useGetWorkspace(id as string);
+	const { renderMenuItems, renderWorkspaceLink } = useWorkspaceMenu({
+		pathname,
+		workspace: data as WorkspaceType,
+		isloadingWorkspace: isLoading,
+		isMenu: true,
+		id: id as string,
+		buttonStyle: "bg-white",
+		onClick: () => {},
+		className: "mt-auto",
+	});
 
 	return (
-		<aside className="flex flex-col gap-4 items-start justify-start  mt-24  min-h-[80vh] h-fit p-5 pt-20 rounded-3xl border-[1px]   w-full ">
-			{renderNavItems()}
+		<aside className="hidden md:flex flex-col gap-4 items-start justify-start  mt-24  min-h-[80vh] bg-blue-400 h-fit p-5 pt-20 rounded-3xl border-[1px]   w-full ">
+			{renderMenuItems && renderMenuItems()}
+			{renderWorkspaceLink && renderWorkspaceLink()}
 		</aside>
 	);
 }

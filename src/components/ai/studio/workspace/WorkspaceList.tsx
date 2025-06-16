@@ -24,7 +24,7 @@ export default function WorkspaceList({
 		);
 
 	return (
-		<ul className="flex flex-col gap-3 w-full overflow-y-auto max-h-screen">
+		<ul className="grid grid-cols-1 md:grid-cols-2 gap-5 w-full overflow-y-auto max-h-screen">
 			{data.map((workspace) => (
 				<Workspace {...workspace} key={workspace._id} />
 			))}

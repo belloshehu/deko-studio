@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 import { navItems } from "@/constants/navigation";
 import useSession from "@/lib/session/use-session";
 import ProfileDropdownMenu from "./ProfileDropdownMenu";
+import { NavButton } from "./NavButton";
 
 export default function Header() {
 	const isMobile = useIsMobile();
@@ -26,18 +27,33 @@ export default function Header() {
 			<Brand />
 
 			<nav className="items-center gap-5 hidden md:flex flex-1">
-				{navItems.map(({ name, path }) => (
-					<Link
-						key={path}
-						className={cn("hover:bg-white p-2 rounded-md", {
-							"bg-blue-100 rounded-sm py-2 px-5": isActivePath(path, pathname),
-						})}
-						href={path}
-					>
-						{name}
-					</Link>
-				))}
+				{navItems.map(({ name, path }) => {
+					return (
+						<Link
+							key={path}
+							className={cn("hover:bg-white p-2 rounded-md", {
+								"bg-blue-100 rounded-sm py-2 px-5": isActivePath(
+									path,
+									pathname
+								),
+								"bg-blue-200 rounded-sm py-2 px-5":
+									pathname.includes(path) === true,
+							})}
+							href={path}
+						>
+							{name}
+						</Link>
+					);
+				})}
 			</nav>
+
+			<NavButton
+				pathname="/trial"
+				currentPathname={pathname}
+				className="bg-blue-500 text-white"
+			>
+				<Link href="/trial">Try Studio now</Link>
+			</NavButton>
 			{!isMobile &&
 				(session?.isLoggedIn ? (
 					<ProfileDropdownMenu />
