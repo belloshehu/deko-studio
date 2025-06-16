@@ -1,4 +1,3 @@
-import StudionPageTabs from "@/components/ai/studio/StudioPageTabs";
 import StudioPageWrapper from "@/components/ai/studio/StudioPageWrapper";
 import StudioRightbar from "@/components/ai/studio/StudioRightbar";
 import PageWrapper from "@/components/page/PageWrapper";
@@ -11,7 +10,7 @@ export default function StudioPage() {
 			{/* <StudioLeftbar /> */}
 			{/* <StudionPageTabs className="md:col-span-4 w-full" /> */}
 			<StudioPageWrapper className="md:col-span-4 w-full" />
-			<StudioRightbar />
+			{/* <StudioRightbar /> */}
 		</PageWrapper>
 	);
 }

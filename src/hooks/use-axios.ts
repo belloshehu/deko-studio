@@ -7,8 +7,7 @@ import { useRouter } from "next/navigation";
 const BACKEND_BASE_URL =
 	process.env.NODE_ENV === "development"
 		? process.env.NEXT_PUBLIC_BACKEND_BASE_URL
-		: process.env.NEXT_PUBLIC_PROD_BASE_URL;
-
+		: process.env.NEXT_PUBLIC_PROD_BACKEND_BASE_URL;
 export const useAxios = () => {
 	const { session, logout } = useSession();
 	const router = useRouter();

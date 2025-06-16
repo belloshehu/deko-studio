@@ -27,17 +27,21 @@ export default function StudioGenerateDecoration() {
 		toast.success("Image saved successfully");
 	};
 	return (
-		<div className="flex flex-col gap-4">
-			<DecorationGnerationForm setContents={setContents} />
+		<div className="flex flex-col gap-4 relative">
+			<DecorationGnerationForm
+				setContents={setContents}
+				className="fixed bottom-10 left-2 right-2"
+			/>
 			{contents?.candidates && (
 				<div className="w-full justify-center items-center flex flex-col gap-4">
 					{contents.candidates[0].content?.parts?.map((part, index: number) => {
 						if (part.text) {
-							return (
-								<div key={index} className="mb-4">
-									<ReactMarkdown>{part.text}</ReactMarkdown>
-								</div>
-							);
+							return null; // dont show text
+							// return (
+							// 	<div key={index} className="mb-4">
+							// 		<ReactMarkdown>{part.text}</ReactMarkdown>
+							// 	</div>
+							// );
 						} else {
 							const imageData = part.inlineData?.data;
 							const buffer = Buffer.from(imageData!, "base64");

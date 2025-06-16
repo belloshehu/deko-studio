@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 import { navItems } from "@/constants/navigation";
 import useSession from "@/lib/session/use-session";
 import ProfileDropdownMenu from "./ProfileDropdownMenu";
+import { NavButton } from "./NavButton";
 
 export default function Header() {
 	const isMobile = useIsMobile();
@@ -38,6 +39,14 @@ export default function Header() {
 					</Link>
 				))}
 			</nav>
+
+			<NavButton
+				pathname="/trial"
+				currentPathname={pathname}
+				className="bg-blue-500 text-white"
+			>
+				<Link href="/trial">Try Studio now</Link>
+			</NavButton>
 			{!isMobile &&
 				(session?.isLoggedIn ? (
 					<ProfileDropdownMenu />

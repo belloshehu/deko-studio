@@ -1,3 +1,4 @@
+import { GetWrokspaceResponseType } from "@/types/workspace.types";
 import { AxiosInstance } from "axios";
 
 class WorkspaceServiceAPI {
@@ -26,7 +27,9 @@ class WorkspaceServiceAPI {
 		protectedRequest: AxiosInstance;
 		id: string;
 	}) {
-		const { data } = await protectedRequest.get(`/workspaces/${id}`);
+		const { data } = await protectedRequest.get<GetWrokspaceResponseType>(
+			`/workspaces/${id}`
+		);
 		return data.data;
 	}
 	static async updateWorkspace({

@@ -39,9 +39,11 @@ export default function DecorationGnerationForm({
 	});
 
 	const onSubmit = async (data: DecorationGenerationSchemaType) => {
-		// upload the images to cloudinary
 		const formData = new FormData();
-		formData.append("image", data.image[0].data_url);
+		// if image is provided, append it to the form data
+		if (data.image && data.image.length > 0) {
+			formData.append("image", data.image[0].data_url);
+		}
 		const colors = data.colors ? data.colors.join(", ") : "any color";
 		formData.append(
 			"prompt",
@@ -54,11 +56,11 @@ export default function DecorationGnerationForm({
 				formData
 			);
 			setContents(uploadedImage.data.data);
+
 			// eslint-disable @typescript-eslint/no-explicit-any
 		} catch (error: any) {
 			// eslint-disable @typescript-eslint/no-explicit-any
 			toast.error(error?.response?.data?.message || "Error generating image");
-			console.error("Error generating image", error);
 		} finally {
 			setIsPending(false);
 		}
@@ -82,54 +84,50 @@ export default function DecorationGnerationForm({
 				)}
 			>
 				{/* images */}
-				<div className="flex flex-col md:flex-row w-full gap-2 justify-center items-center flex-wrap">
-					<FormSelect
-						control={control}
-						options={eventTypes}
-						register={register("eventType")}
-						placeholder="Select Event "
-					/>
-					<FormMultiSelect
-						label=""
-						name="colors"
-						control={control}
-						options={colors}
-						placeholder={"Select colors"}
-						emptyMessage="No events found"
-					/>
-					<FormImagesUploader
-						control={control}
-						name="image"
-						//   label="Event center Image"
-						maxImageSize={1000000}
-					/>
-				</div>
-
-				<div className="relative flex items-center justify-center h-fit p-0 rounded-full w-[80%]">
+				<h2>What do you want to decorate today?</h2>
+				<div className="relative flex items-center justify-center h-24 p-0 rounded-3xl w-full md:w-1/2 bg-white">
+					<div className="absolute bottom-2  left-4 flex flex-row w-fit gap-2 justify-center items-center flex-wrap">
+						<FormSelect
+							control={control}
+							options={eventTypes}
+							register={register("eventType")}
+							placeholder="Select Event "
+						/>
+						<FormMultiSelect
+							label=""
+							name="colors"
+							control={control}
+							options={colors}
+							placeholder={"Select colors"}
+							emptyMessage="No events found"
+						/>
+						<FormImagesUploader
+							control={control}
+							name="image"
+							//   label="Event center Image"
+							maxImageSize={1000000}
+						/>
+					</div>
 					<FormTextarea
 						control={control}
 						name="description"
 						id="description"
-						placeholder="Optional prompt for the event center decoration"
+						placeholder="Type prompt (optional)"
 						errorMessage={errors.description?.message}
-						className="w-full max-w-full h-full p-4 rounded-full border-[1px] flex items-center align-middle"
+						className="w-full max-w-full h-24 p-8 pt-3 rounded-3xl border-[1px] flex items-center align-middle bg-white"
 					/>
 
 					<Button
 						disabled={isPending}
 						className={cn(
-							"btn btn-primary bg-blue-300 rounded-full right-2 top-4 absolute",
+							"btn btn-primary bg-blue-300 rounded-full right-3 top-8 w-8 h-8 absolute",
 							{
 								"animate-pulse": isPending,
 							}
 						)}
 						type="submit"
 					>
-						{isPending ? (
-							<Loader className="animate-spin text-white" />
-						) : (
-							"Start"
-						)}
+						{isPending ? <Loader className="animate-spin text-white" /> : "Go"}
 					</Button>
 				</div>
 			</form>

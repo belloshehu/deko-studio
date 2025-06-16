@@ -27,7 +27,8 @@ export const metadata: Metadata = {
 	metadataBase: new URL("https://deko.studio"),
 	openGraph: {
 		title: "Deko Studio",
-		description: "Create your own decoration",
+		description:
+			"Create your own decoration without technical skills or design knowledge with AI.",
 		url: "https://deko.studio",
 		siteName: "Deko Studio",
 		images: [

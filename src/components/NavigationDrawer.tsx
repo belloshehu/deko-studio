@@ -38,7 +38,7 @@ export default function NavigationDrawer() {
 	return (
 		<Drawer direction="left" open={toggleDrawer} onOpenChange={setToggleDrawer}>
 			<DrawerTrigger>
-				<MenuIcon size={34} className="text-blue-400" />
+				<MenuIcon size={34} className="text-blue-400ls" />
 				<span className="sr-only">nav drawer</span>
 			</DrawerTrigger>
 			<DrawerContent>
@@ -102,6 +102,14 @@ export default function NavigationDrawer() {
 							>
 								<Flower className="text-inherit text-3xl" size={24} />
 								<Link href="/studio">AI Decoration Studio</Link>
+							</NavButton>
+							<NavButton
+								pathname="/studio"
+								currentPathname={pathname}
+								onClick={() => setToggleDrawer(false)}
+							>
+								<Flower className="text-inherit text-3xl" size={24} />
+								<Link href="/trial">Try Studio now</Link>
 							</NavButton>
 						</>
 					) : (
