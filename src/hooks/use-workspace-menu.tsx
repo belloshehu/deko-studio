@@ -16,6 +16,7 @@ export const useWorkspaceMenu = ({
 	workspace,
 	buttonStyle,
 	onClick,
+	className,
 }: {
 	pathname: string;
 	id?: null | string;
@@ -24,15 +25,12 @@ export const useWorkspaceMenu = ({
 	workspace: WorkspaceType;
 	buttonStyle?: string;
 	onClick?: () => void;
+	className?: string;
 }) => {
 	const renderIcon = useRenderIcon();
 	const renderWorkspaceLink = () => {
 		return (
-			<div
-				className={cn(" w-full cursor-pointer ", {
-					"": pathname !== "/studio",
-				})}
-			>
+			<div className={cn(" w-full cursor-pointer ", className)}>
 				{/* Only visible inside a workspace */}
 				{id ? (
 					isloadingWorkspace ? (
@@ -47,7 +45,7 @@ export const useWorkspaceMenu = ({
 						</div>
 					)
 				) : null}
-				<Link href={`/studio`} className="w-full" onClick={onClick}>
+				<Link href={`/studio`} onClick={onClick}>
 					<NavButton
 						pathname={"/studio"}
 						currentPathname={"/studio"}

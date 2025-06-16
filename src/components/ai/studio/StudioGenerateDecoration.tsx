@@ -9,11 +9,24 @@ import { toast } from "sonner";
 import { Share2 } from "lucide-react";
 import axios from "axios";
 import fileDownload from "js-file-download";
+import useFileUpload from "@/hooks/use-file-upload";
+import { useSaveDecoration } from "@/hooks/service-hooks/decoration.hooks";
+import { DecorationPayloadType } from "@/types/decoration.types";
+import { useParams } from "next/navigation";
+import useSession from "@/lib/session/use-session";
+import { useAxios } from "@/hooks/use-axios";
 
 export default function StudioGenerateDecoration() {
 	const [contents, setContents] = useState<GenerateContentResponse | null>(
 		null
 	);
+	const { uploadToCloudinary } = useFileUpload();
+	const { id } = useParams();
+	const { mutateAsync, isPending } = useSaveDecoration(id as string);
+	const { protectedRequest } = useAxios();
+	const {
+		session: { isLoggedIn },
+	} = useSession();
 
 	// handle image download
 	const handleImageDownload = (imageData: string) => {
@@ -28,6 +41,20 @@ export default function StudioGenerateDecoration() {
 			.catch((error) => {
 				toast.error("Error saving image");
 			});
+	};
+
+	const handleSave = async (imageData: string) => {
+		const response = await uploadToCloudinary(imageData);
+		if (response?.secure_url) {
+			const decorationData: DecorationPayloadType = {
+				image: response.secure_url,
+				name: "Decoration " + Date.now(),
+				description: "Generated decoration for the event hall",
+				workspace: id as string,
+				// add other decoration data if needed
+			};
+			await mutateAsync({ payload: decorationData, protectedRequest });
+		}
 	};
 	return (
 		<div className="flex flex-col gap-4 relative">
@@ -72,12 +99,15 @@ export default function StudioGenerateDecoration() {
 										>
 											Download
 										</Button>
-										<Button
-											onClick={() => handleImageDownload(image)}
-											className="w-fit bg-blue-400"
-										>
-											Save
-										</Button>
+										{/* Rendered when logged in and in workspace */}
+										{isLoggedIn && (
+											<Button
+												onClick={() => handleSave(image)}
+												className="w-fit bg-blue-400"
+											>
+												{isPending ? "Saving..." : "Save Decoration"}
+											</Button>
+										)}
 										<Button variant={"secondary"} className="p-0">
 											<Share2 className="text-blue-400" size={50} />
 										</Button>
