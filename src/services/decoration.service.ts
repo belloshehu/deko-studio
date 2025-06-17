@@ -19,13 +19,15 @@ class DecorationServiceAPI {
 		return data.data;
 	}
 
-	static async getDecorations({
+	static async getDecorationsByWorkspace({
 		protectedRequest,
+		workspaceId,
 	}: {
 		protectedRequest: AxiosInstance;
+		workspaceId: string;
 	}) {
 		const { data } = await protectedRequest.get<GetDecorationListResponseType>(
-			`/decorations`
+			`/decorations/workspaces/${workspaceId}`
 		);
 		return data.data;
 	}

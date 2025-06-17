@@ -1,21 +1,18 @@
 "use client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import StudioDecorationGuide from "./StudioDecorationGuide";
 import StudioGenerateDecoration from "./StudioGenerateDecoration";
 import { cn } from "@/lib/utils";
-import { useParams, usePathname } from "next/navigation";
+import { useParams } from "next/navigation";
 import {
 	useGetWorkspace,
 	useGetWorkspaces,
 } from "@/hooks/service-hooks/worspace.hook";
 import WorkspaceList from "./workspace/WorkspaceList";
 import { Folders, Group } from "lucide-react";
-import WorkspaceItemsDropdown from "./workspace/WorkspaceItemsDropdown";
 
 // EventTabs component
 export default function StudionPageTabs({ className }: { className?: string }) {
 	const { id } = useParams();
-	const pathname = usePathname();
 	const { data, isLoading } = useGetWorkspace(id as string);
 	const { data: workspaces, isLoading: isLoadingWorkspaces } =
 		useGetWorkspaces();

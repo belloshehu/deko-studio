@@ -33,14 +33,16 @@ export const useGetDecorations = (workspaceId: string) => {
 	const { protectedRequest } = useAxios();
 	return useQuery({
 		queryFn: async () =>
-			DecorationServiceAPI.getDecorations({ protectedRequest }),
+			DecorationServiceAPI.getDecorationsByWorkspace({
+				protectedRequest,
+				workspaceId,
+			}),
 		queryKey: ["decorations", workspaceId],
 	});
 };
 
 export const useDeleteDecoration = () => {
 	const queryClient = useQueryClient();
-	const { protectedRequest } = useAxios();
 	return useMutation({
 		mutationFn: DecorationServiceAPI.deleteDecoration,
 		onSuccess: () => {
@@ -55,7 +57,6 @@ export const useDeleteDecoration = () => {
 
 export const useUpdateDecoration = () => {
 	const queryClient = useQueryClient();
-	const { protectedRequest } = useAxios();
 	return useMutation({
 		mutationFn: DecorationServiceAPI.updateDecoration,
 		onSuccess: () => {
