@@ -15,7 +15,7 @@ import {
 	useUpdateWorkspace,
 } from "@/hooks/service-hooks/worspace.hook";
 import FormTextarea from "@/components/form-fields/FormTextarea";
-import { Edit3 } from "lucide-react";
+import { Edit3, Folder } from "lucide-react";
 import {
 	Dialog,
 	DialogClose,
@@ -74,11 +74,16 @@ export default function WorkspaceForm({
 		<Dialog>
 			<DialogTrigger asChild>
 				{defaultValues?._id ? (
-					<button className="rounded-full h-8 w-8 p-1 bg-slate-200">
+					<Button
+						variant={"ghost"}
+						className="rounded-full h-8 w-8 p-1 bg-slate-200"
+					>
 						<Edit3 className="text-gray-500" />
-					</button>
+					</Button>
 				) : (
-					<button>Create</button>
+					<Button>
+						<Folder /> New workspace
+					</Button>
 				)}
 			</DialogTrigger>
 

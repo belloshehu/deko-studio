@@ -43,7 +43,6 @@ export default function Workspace({
 					descriptionText="The workspace and its contents will be delete permanently"
 					onDelete={handleDelete}
 				/>
-
 				<WorkspaceForm defaultValues={{ name, _id, description }} />
 			</div>
 		</article>

@@ -1,11 +1,11 @@
 "use client";
 
 import SaveDecorationList from "@/components/ai/studio/saved-decoration/SaveDecorationList";
+import Loader from "@/components/Loader";
 import PageWrapper from "@/components/page/PageWrapper";
 import Title from "@/components/Title";
 import { useGetDecorations } from "@/hooks/service-hooks/decoration.hooks";
 import { DecorationType } from "@/types/decoration.types";
-import { Loader } from "lucide-react";
 
 import { useParams } from "next/navigation";
 
@@ -22,9 +22,7 @@ export default function SavePage() {
 			/>
 
 			<div className="w-full">
-				{isLoading && (
-					<Loader className="animate-spin text-blue-500 w-10 h-10 mx-auto my-20" />
-				)}
+				{isLoading && <Loader message="loading decorations" />}
 				{!isLoading && <SaveDecorationList data={data as DecorationType[]} />}
 			</div>
 		</PageWrapper>

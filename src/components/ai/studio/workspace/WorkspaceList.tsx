@@ -1,7 +1,7 @@
 import { WorkspaceType } from "@/types/workspace.types";
 import Workspace from "@/components/ai/studio/workspace/Workspace";
 import NoContent from "@/components/NoContent";
-import { Loader } from "lucide-react";
+import Loader from "@/components/Loader";
 
 export default function WorkspaceList({
 	data,
@@ -13,7 +13,7 @@ export default function WorkspaceList({
 	if (isLoading)
 		return (
 			<div className="flex justify-center items-center w-full h-full">
-				<Loader className="animate-spin" />
+				<Loader message="Loading workspaces" />
 			</div>
 		);
 	if (!data || data.length === 0)

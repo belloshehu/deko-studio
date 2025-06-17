@@ -15,6 +15,7 @@ import { useParams } from "next/navigation";
 import useSession from "@/lib/session/use-session";
 import { useAxios } from "@/hooks/use-axios";
 import { Download, Save } from "lucide-react";
+import { set } from "zod";
 
 export default function StudioGenerateDecoration() {
 	const [contents, setContents] = useState<GenerateContentResponse | null>(
@@ -23,6 +24,7 @@ export default function StudioGenerateDecoration() {
 	const { uploadToCloudinary } = useFileUpload();
 	const { id } = useParams();
 	const { mutateAsync, isPending } = useSaveDecoration(id as string);
+	const [uploading, setUploading] = useState(false);
 	const { protectedRequest } = useAxios();
 	const {
 		session: { isLoggedIn },
@@ -44,6 +46,7 @@ export default function StudioGenerateDecoration() {
 	};
 
 	const handleSave = async (imageData: string) => {
+		setUploading(true);
 		const response = await uploadToCloudinary(imageData);
 		if (response?.secure_url) {
 			const decorationData: DecorationPayloadType = {
@@ -54,6 +57,7 @@ export default function StudioGenerateDecoration() {
 				// add other decoration data if needed
 			};
 			await mutateAsync({ payload: decorationData, protectedRequest });
+			setUploading(false);
 		}
 	};
 	return (
@@ -63,15 +67,10 @@ export default function StudioGenerateDecoration() {
 				className="fixed bottom-10 left-2 right-2"
 			/>
 			{contents?.candidates && (
-				<div className="w-full justify-center items-center flex flex-col gap-4">
+				<div className="w-full justify-start items-center flex flex-col gap-4">
 					{contents.candidates[0].content?.parts?.map((part, index: number) => {
 						if (part.text) {
 							return null; // dont show text
-							// return (
-							// 	<div key={index} className="mb-4">
-							// 		<ReactMarkdown>{part.text}</ReactMarkdown>
-							// 	</div>
-							// );
 						} else {
 							const imageData = part.inlineData?.data;
 							const buffer = Buffer.from(imageData!, "base64");
@@ -107,7 +106,8 @@ export default function StudioGenerateDecoration() {
 												className="w-fit bg-blue-400"
 												disabled={isPending}
 											>
-												<Save /> {isPending ? "Saving..." : "Save Decoration"}
+												<Save />{" "}
+												{isPending || uploading ? "Saving..." : "Save "}
 											</Button>
 										)}
 									</div>

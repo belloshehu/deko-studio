@@ -67,8 +67,8 @@ export default function DecorationUpdateForm({
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<button className="rounded-full h-8 w-8 p-1 bg-slate-200">
-					<Edit3 className="text-gray-500" />
+				<button className="rounded-full h-8 w-8 p-1 bg-slate-200 flex items-center justify-center">
+					<Edit3 className="text-gray-500" size={16} />
 				</button>
 			</DialogTrigger>
 

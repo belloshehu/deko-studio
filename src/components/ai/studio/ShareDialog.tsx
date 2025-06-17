@@ -20,8 +20,8 @@ export default function ShareDialog({
 	return (
 		<Dialog>
 			<DialogTrigger>
-				<button>
-					<Share2 className="text-blue-500" />
+				<button className="flex items-center gap-2  bg-gray-100 hover:bg-gray-200 p-2 rounded-full">
+					<Share2 className="text-blue-500" size={20} />
 				</button>
 			</DialogTrigger>
 			<DialogContent>

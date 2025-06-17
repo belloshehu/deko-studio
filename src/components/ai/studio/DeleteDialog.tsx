@@ -6,6 +6,7 @@ import {
 	DialogHeader,
 	DialogTrigger,
 } from "@/components/ui/dialog";
+import { DialogClose } from "@radix-ui/react-dialog";
 import { Trash } from "lucide-react";
 
 interface DeleteDialogProps {
@@ -23,7 +24,7 @@ export default function DeleteDialog({
 	return (
 		<Dialog>
 			<DialogTrigger className="flex items-center gap-2 text-red-500 bg-gray-100 hover:bg-gray-200 p-1 px-2 rounded">
-				<Trash className="text-xl" /> Delete
+				<Trash size={16} /> Delete
 			</DialogTrigger>
 			<DialogContent>
 				<DialogHeader>
@@ -34,7 +35,9 @@ export default function DeleteDialog({
 					<Button variant={"destructive"} onClick={onDelete}>
 						Delete
 					</Button>
-					<Button>Cancel</Button>
+					<DialogClose asChild>
+						<Button>Cancel</Button>
+					</DialogClose>
 				</DialogFooter>
 			</DialogContent>
 		</Dialog>
