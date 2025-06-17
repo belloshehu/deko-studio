@@ -17,6 +17,5 @@ bun dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 
+![Screenshot 2025-06-17 at 16 47 58](https://github.com/user-attachments/assets/e383a856-4319-491b-bbc6-317fd2e27e63)
 
-
-<img width="1440" alt="Screenshot 2025-05-18 at 22 35 23" src="https://github.com/user-attachments/assets/cf58c249-d64c-4c47-9297-0d9bfd884adf" />
