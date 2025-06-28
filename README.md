@@ -16,6 +16,9 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+### Live Url
+Visit [https://deko-studio.vercel.app/](https://deko-studio.vercel.app/) to try Deko studio live
+
 
 
 ![Screenshot 2025-06-17 at 16 47 58](https://github.com/user-attachments/assets/d860f518-d69e-44df-9395-ea69004a6b63)
