@@ -9,8 +9,8 @@ import FormInputField from "@/components/form-fields/FormInput";
 import { LoadingDialog } from "@/components/LoadingDialog";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import {
-	IWorkspaceInviteDataType,
-	WorkspaceInviteValidationSchema,
+	IWorkspaceInvitationDataType,
+	WorkspaceInvitationValidationSchema,
 } from "@/schemas/workspace.schema";
 import { useCreateWorkspace } from "@/hooks/service-hooks/worspace.hook";
 import FormTextarea from "@/components/form-fields/FormTextarea";
@@ -23,15 +23,15 @@ export default function WorkspaceInviteForm() {
 	const { protectedRequest } = useAxios();
 
 	const form = useForm({
-		resolver: zodResolver(WorkspaceInviteValidationSchema),
+		resolver: zodResolver(WorkspaceInvitationValidationSchema),
 
 		defaultValues: {
-			email: "",
+			receiverEmail: "",
 			message: "",
 		},
 	});
 
-	const onSubmit = async (data: IWorkspaceInviteDataType) => {
+	const onSubmit = async (data: IWorkspaceInvitationDataType) => {
 		// mutate({ protectedRequest, payload: data });
 	};
 	const {
@@ -62,8 +62,8 @@ export default function WorkspaceInviteForm() {
 							name="email"
 							type="email"
 							id="email"
-							placeholder="Memebr's email"
-							errorMessage={errors.email?.message}
+							placeholder="Memeber's email"
+							errorMessage={errors.receiverEmail?.message}
 						/>
 
 						<FormTextarea

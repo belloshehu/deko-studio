@@ -55,6 +55,23 @@ class WorkspaceServiceAPI {
 		const { data } = await protectedRequest.delete(`/workspaces/${id}`);
 		return data.data;
 	}
+
+	// invite user to workspace
+	static async inviteUserToWorkspace({
+		protectedRequest,
+		payload,
+		id,
+	}: {
+		protectedRequest: AxiosInstance;
+		payload: { receiverEmail: string; message: string };
+		id: string;
+	}) {
+		const { data } = await protectedRequest.post(
+			`/workspaces/${id}/invite`,
+			payload
+		);
+		return data.data;
+	}
 }
 
 export default WorkspaceServiceAPI;

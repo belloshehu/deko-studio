@@ -35,11 +35,11 @@ export default function SavedDecoration({ decoration }: SavedDecorationProps) {
 				alt={name}
 				className="w-full h-[200] object-cover rounded-lg mb-2"
 			/>
+			<h3 className="text-lg font-medium">{name}</h3>
+			<p className="text-gray-600">{description}</p>
 			<small className="px-2 bg-slate-100 rounded-2xl text-blue-400">
 				{formatDate(createdAt)}
 			</small>
-			<h3 className="text-lg font-medium">{name}</h3>
-			<p className="text-gray-600">{description}</p>
 			<div className="flex items-center justify-between mt-4">
 				<ShareDialog
 					url={image}

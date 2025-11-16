@@ -3,7 +3,7 @@ import { formatDate } from "@/lib/timedate";
 import { WorkspaceType } from "@/types/workspace.types";
 import Link from "next/link";
 import WorkspaceForm from "./WorkspaceForm";
-import { Calendar } from "lucide-react";
+import { Calendar, Flower } from "lucide-react";
 import DeleteDialog from "../DeleteDialog";
 import { useDeleteWorkspace } from "@/hooks/service-hooks/worspace.hook";
 import { useAxios } from "@/hooks/use-axios";
@@ -16,6 +16,7 @@ export default function Workspace({
 	user,
 	name,
 	createdAt,
+	decorations,
 }: WorkspaceProps) {
 	const { mutate, isPending } = useDeleteWorkspace();
 	const { protectedRequest } = useAxios();
@@ -27,9 +28,15 @@ export default function Workspace({
 		<article className="flex flex-col gap-2 justify-start items-start p-3 py-5 rounded-md w-full bg-white shadow-sm">
 			<h3 className="font-semibold ">{name}</h3>
 			<p>{description}</p>
-			<div className="bg-gray-100 p-1 px-2 rounded-2xl flex items-center gap-2">
-				<Calendar size={20} className="text-blue-500" />
-				<small>{formatDate(createdAt)}</small>
+			<div className="flex items-center gap-2">
+				<div className="bg-gray-100 p-1 px-2 rounded-2xl flex items-center gap-2">
+					<Calendar size={20} className="text-blue-500" />
+					<small>{formatDate(createdAt)}</small>
+				</div>
+				<div className="bg-gray-100 text-blue-400 p-1 px-2 rounded-2xl flex items-center gap-2">
+					<Flower /> {decorations?.length} decoration
+					{decorations && decorations?.length > 1 ? "s" : ""}
+				</div>
 			</div>
 			<div className="mt-5 flex items-center gap-3 justify-between w-full">
 				<Link

@@ -23,7 +23,7 @@ export default function StudioPageWrapper({
 			<div className="flex items-center justify-between w-full">
 				<Title
 					title="Workspaces"
-					description="Workspaces you have created so far"
+					description="Workspaces are used to organize your decorations. Put related decorations in the same workspace."
 				/>
 				<WorkspaceForm />
 			</div>

@@ -10,6 +10,7 @@ export default function StudioLeftbar() {
 
 	const { id } = useParams();
 	const { data, isLoading } = useGetWorkspace(id as string);
+
 	const { renderMenuItems, renderWorkspaceLink } = useWorkspaceMenu({
 		pathname,
 		workspace: data as WorkspaceType,

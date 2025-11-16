@@ -15,3 +15,13 @@ export const WorkspaceInviteValidationSchema = z.object({
 export type IWorkspaceInviteDataType = z.infer<
 	typeof WorkspaceInviteValidationSchema
 >;
+
+// // Schema for workspace invitation
+export const WorkspaceInvitationValidationSchema = z.object({
+	name: z.string().min(5, "Name must be at least 5 characters long"),
+	message: z.string().min(5, "Message must be at least 5 characters long"),
+	receiverEmail: z.string().email("Invalid email format"),
+});
+export type IWorkspaceInvitationDataType = z.infer<
+	typeof WorkspaceInvitationValidationSchema
+>;
